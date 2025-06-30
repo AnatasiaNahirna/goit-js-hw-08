@@ -65,9 +65,9 @@ const images = [
     ];
     
 const ul = document.querySelector(".gallery");
-images.map(image => {
+const markup = images.map(image => {
     const { preview, original, description } = image;
-    ul.insertAdjacentHTML("beforeend", `<li class="gallery-item">
+   return `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
@@ -76,12 +76,9 @@ images.map(image => {
       alt="${description}"
     />
   </a>
-</li>
-`);
-});
-
-const imageLink = document.querySelector(".gallery-link");
-imageLink.addEventListener("click", () => { preventDefault() });
+</li>`
+}).join("");
+ul.insertAdjacentHTML("beforeend", markup);
 
 ul.addEventListener("click", fullImage);
 
